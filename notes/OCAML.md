@@ -1,4 +1,4 @@
-*# ***Syntax***
+# ***Syntax***
 ## ***Table-of-Contents:***
 1. Variables and Constants
 2. Functions 
@@ -17,6 +17,7 @@ $$ Variables-and-Constants $$
 
 ------------------------------------------
 $$ Functions $$
+
 ***Function Definition:***
 > Functions are defined using `let` and `in`
 >>```
@@ -35,6 +36,7 @@ $$ Functions $$
 >>```
 ------------------------------------------
 $$ Conditionals $$
+
 > ***If-Else:***
 >>```
 >> let x  = 10 in
@@ -42,6 +44,7 @@ $$ Conditionals $$
 >>```
 ---------------------------------------
 $$ Tuples $$
+
 ***Tuple Definition:***
 >
 >>```
@@ -53,6 +56,7 @@ $$ Tuples $$
 >>```
 -------------------------------------------
 $$ Lists $$
+
 ***List Definition:***
 >>```
 >> let lst = [1; 2; 3; 4] ;; (*semicolon separates elements in a list*)
@@ -73,6 +77,7 @@ $$ Lists $$
 >>```
 -----------------------------------------
 $$ Records $$
+
 ***Record Definition:***
 >>```
 >> type person = { name: string; age: int};;
@@ -84,7 +89,9 @@ $$ Records $$
 >> let age = p.age ;;
 >>```
 > More about what we *can* do with them later...
+-----------------------------------------
 $$ Arrays $$
+
 ***Array Definition:***
 >>```
 >> let arr = [|1; 2; 3 |] ;; (* array of integers *)
@@ -95,6 +102,7 @@ $$ Arrays $$
 >>```
 -----------------------------------------
 $$ Type-Definitions $$
+
 ***Type Definition:***
 >>```
 >> type person = { name: string; age: int } ;;
@@ -105,6 +113,7 @@ $$ Type-Definitions $$
 >>```
 -----------------------------------------
 $$ Modules $$
+
 ***Modules Definition:***
 >>```
 >> module Math = struct
@@ -119,6 +128,7 @@ $$ Modules $$
 >>```
 -----------------------------------------
 $$ Exception-Handling $$
+
 ***Defining and Rasining Exceptions:***
 >>```
 >> exception MyException as string ;;
@@ -135,6 +145,7 @@ $$ Exception-Handling $$
 >>```
 -----------------------------------------
 $$ Loops $$
+
 > ***For Loop:***
 >>```
 >> for i = 1 to 10 do
@@ -151,18 +162,21 @@ $$ Loops $$
 >>```
 -----------------------------------------
 $$ Pipes-and-Composition $$
+
 > ***Pipes (`|>`operator)***:
 >>```
 >> let result = 5 |> (fun x -> x + 1) |> (fun x -> x * 2) ;;
 >>```
 -----------------------------------------
 $$ Array-Iteration $$
+
 >***Array Iteration:***
 >>```
 >> Array.iter (fun x -> print_endline (string_of_int x)) arr ;;
 >>```
 -----------------------------------------
 $$ Comments $$
+
 >***Single-Line Comment:***
 >>```
 >> (* This is a single-line comment *)
@@ -174,6 +188,7 @@ $$ Comments $$
 >>```
 -----------------------------------------
 $$ Module-Aliases $$
+
 >***Alias of Module:***
 >>```
 >> module M = Math ;;
@@ -181,6 +196,7 @@ $$ Module-Aliases $$
 >>```
 -----------------------------------------
 $$ Type-Parameters (Generic-Types) $$
+
 ***Polymorphnic Types:***
 >>```
 >> let id x = x ;; (* 'x' can be of any type, returning x itself *)
