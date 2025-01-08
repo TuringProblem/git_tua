@@ -1,4 +1,3 @@
-(* Author { @Override } | 1/7/2025 : 11:15 *)
 (* ANSI color codes *)
 let red = "\027[31m"
 let green = "\027[32m"
