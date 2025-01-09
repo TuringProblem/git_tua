@@ -1,4 +1,5 @@
-#!/usr/bin/
+#!/bin/zsh
+# if you are linux use : #!/usr/bin/
 
 # Author: { @Override } | 1/7/2025 ; 19:14
 
@@ -6,6 +7,12 @@ function isInstalled() {
     if ! command -V ocamlopt &> /dev/null
     then
         echo "Ocaml is not installed. Please click https://ocaml.org/docs/installing-ocaml\n"
+        echo "Would you like to download?"
+        read answer
+        # TODO: NEED TO FINISH THE LOGIC FOR THIS -> if yes, check: Mac, Linux, Windows -> download for respective OS. @ 1/8/25 16;00
+        if [ $answer -eq "y"]; then
+            echo "are you on mac, windows, or linux:"
+        fi
         exit 1
     fi
 }
