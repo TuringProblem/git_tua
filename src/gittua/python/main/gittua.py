@@ -2,6 +2,7 @@
 ANSI = {
 
 }
+
 def getUsr():
     name = input("Enter your Github Profile: ")
     return name
