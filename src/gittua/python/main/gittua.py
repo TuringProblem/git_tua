@@ -1,21 +1,29 @@
 # @author { @Override } | 1/9/2025 : 0133
 
-def getUsr():
-    name = input("Enter your Github Profile: ")
-    return name
+def getUsr(): #{
+    name: str = str(input("Enter your Github Profile: "))
+    return name;
+#}
 
-github = getUsr()
+github = getUsr();
 
 def gitTua(f,a):
-    return f(a)
+    return f(a);
 
-def gitBlank(str):
-    return "git {}".format(str)
+def gitBlank(str: str) -> str:
+    return "git {}".format(str);
 
 def branch():
-    return 0
+    return 0;
 
-git =  lambda x : gitTua(gitBlank, x)
+git =  lambda x : gitTua(gitBlank, x);
+
+
+def commandBox():
+    print("┌─────────── Enter Command ───────────┐"); 
+    usrInput: str = str(input("| ")) 
+
+
 
 commands = {
         'cl': git("clone"),
@@ -27,6 +35,8 @@ commands = {
         'help': git("-help")
 }
 
+
+
 print("Testing:\n")
 
 print(commands['b'])
@@ -36,3 +46,4 @@ print(commands['a'])
 print(commands['fa'])
 print(commands['help'])
 print(commands['cl'])
+commandBox()

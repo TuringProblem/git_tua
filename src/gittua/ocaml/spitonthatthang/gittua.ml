@@ -33,7 +33,7 @@ YM      M  MM  MM      MM      YM       M  ,MMMMMMMMb
 
 
 (* Just using this to create the progression Bar *)
-let display_progress msg =
+let displayProgress msg =
   print_string (msg ^ " ");
   for i = 0 to 20 do
     print_string (green ^ "█" ^ reset);
@@ -60,9 +60,9 @@ let execute_git_command cmd =
   | _ -> false
 
 let updateRepo () =
-  display_progress "Fetching updates...";
+  displayProgress "Fetching updates...";
   if execute_git_command "git fetch" then begin
-    display_progress "Pulling changes...";
+    displayProgress "Pulling changes...";
     if execute_git_command "git pull" then
       print_endline (green ^ "✓ Successfully updated!" ^ reset)
     else
@@ -74,21 +74,29 @@ let addCloneURL () =
   print_endline (blue ^ "\nPlease paste GitHub Repository Link: " ^ reset);
   print_endline (cyan ^ "[i.e., https://github.com/yourname/your_repository]" ^ reset);
   let repoLink = input_line stdin in
-  display_progress "Cloning repository...";
+  displayProgress "Cloning repository...";
   if execute_git_command ("git clone " ^ repoLink) then
     print_endline (green ^ "✓ Repository cloned successfully!" ^ reset)
   else
     print_endline (red ^ "✗ Clone failed. Please check the repository URL and your permissions." ^ reset)
 
-let display_menu () =
-  print_endline (bold ^ "\n╭───── Available Commands ─────╮" ^ reset);
+
+let gitTua () =
+   displayProgress "Adding files..." 
+   if execute_git_command "git add ." then begin
+       displayProgress "commiting changes..."
+       let message = input_line stdin in
+
+
+let displayMenu () =
+  print_endline (bold ^ "\n╭───── Available Commands ───────────╮" ^ reset);
   print_endline (bold^ cyan ^ " cl " ^ reset ^ "- Clone Repository");
-  print_endline (cyan ^ " u " ^ reset ^ "- Update Current Repo");
-  print_endline (cyan ^ " s " ^ reset ^ "- Show Status");
+  print_endline (cyan ^ " rugpull " ^ reset ^ "- Git fetch | pull repo ");
+  print_endline (cyan ^ " leaks " ^ reset ^ "- Shows the current Status of Branch");
   print_endline (cyan ^ " b " ^ reset ^ "- Branch Management");
-  print_endline (cyan ^ " p" ^ green ^ "- Push Current " ^ reset);
+  print_endline (green ^ " gittua" ^ reset ^ "- git add . commit " ^ reset);
   print_endline (red ^ " q " ^ reset ^ "- Quit");
-  print_endline (bold ^ "╰──────────────────────────────╯" ^ reset);;
+  print_endline (bold ^ "╰────────────────────────────────────╯" ^ reset);;
 
 let showStatus() =
   print_endline (yellow ^ "\n📊 Current Repository Status:" ^ reset);
@@ -108,30 +116,31 @@ let branch_management () =
 let commands = Hashtbl.create 10;;
 let () = 
   Hashtbl.add commands "cl" addCloneURL;
-  Hashtbl.add commands "u" updateRepo;
-  Hashtbl.add commands "s" showStatus;
+  Hashtbl.add commands "rugpull" updateRepo;
+  Hashtbl.add commands "leaks" showStatus;
+  Hashtbl.add commands "gittua" gitTua;
   Hashtbl.add commands "b" branch_management;;
 
 let executeCommand userInput = 
   try
     let command = Hashtbl.find commands userInput in
     command ()
+
   with
   | Not_found -> print_endline (red ^ "Command not found!" ^ reset)
 
-
 let _ = Sys.command "clear" ;;
-let rec main_loop () =
 
-  display_menu ();
-  print_string (bold ^ "\n→ Enter command: " ^ reset);
+let rec main_loop () =
+  displayMenu ();
   let userInput = input_line stdin in
-  if userInput = "q" then begin
-    display_progress "Shutting down...";
-    print_endline (green ^ "👋 Goodbye!" ^ reset)
+  if userInput = "q" then begin 
+    displayProgress "Shutting down...";
+    print_endline (green ^ "👋 Goodbye!" ^ reset);
   end else begin
-    executeCommand userInput;
-    main_loop ()
+      executeCommand userInput;
+      main_loop ()
   end
+
 
 let () = main_loop ();;
